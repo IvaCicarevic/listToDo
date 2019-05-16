@@ -32,7 +32,14 @@
                             <outlet property="delegate" destination="Lzc-26-d7n" id="KwU-wD-WlO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="ListToDo" id="cPy-a8-zml"/>
+                    <navigationItem key="navigationItem" title="ListToDo" id="cPy-a8-zml">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="WJD-0X-Dya">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addNewItem:" destination="Lzc-26-d7n" id="B55-yp-QoA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rmD-P3-aGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

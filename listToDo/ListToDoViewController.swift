@@ -11,7 +11,7 @@ import UIKit
 class ListToDoViewController: UITableViewController {
 
     
-    let itemArray = ["Buy milk", "Pick up children", "Call doctor"]
+    var itemArray = ["Buy milk", "Pick up children", "Call doctor"]
     
     
     override func viewDidLoad() {
@@ -21,7 +21,6 @@ class ListToDoViewController: UITableViewController {
 
     
     //MARK: - TableView DataSource Methods
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
     }
@@ -36,7 +35,6 @@ class ListToDoViewController: UITableViewController {
     }
     
     //MARK: - TableView Delegate Methods
-
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //print(itemArray[indexPath.row])
@@ -48,6 +46,32 @@ class ListToDoViewController: UITableViewController {
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    //MARK: - Add New Items
+    @IBAction func addNewItem(_ sender: UIBarButtonItem) {
+        
+        var textField = UITextField()
+    
+        let alert = UIAlertController(title: "Add New Item To Do", message: "", preferredStyle: .alert)
+    
+        let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+        
+        self.itemArray.append(textField.text!)
+            
+            self.tableView.reloadData()
+            
+        }
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Create New Item"
+            textField = alertTextField
+            
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
     }
 }
 
